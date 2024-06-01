@@ -39,7 +39,8 @@ def login(username, password):
     return result
 #-------------------------------------------------------------------------------------------------------------------------------------------
 
-def admin_menu():
+
+def dashboard():
     os.system('cls')
     print(
         f"""
@@ -56,6 +57,29 @@ def admin_menu():
 |_____________________________|
     """
     )
+#-------------------------------------------------------------------------------------------------------------------------------------------
+def input_dashboard():
+
+    while True:
+        pilihan_dashboard = input("Pilih Nomor = ")
+
+        if pilihan_dashboard == '1':
+            print('1')
+            break
+        elif pilihan_dashboard == '2':
+            print('2')
+            break
+        elif pilihan_dashboard == '3':
+            print('3')
+            break
+        elif pilihan_dashboard == '4':
+            print('4')
+            break
+
+        elif pilihan_dashboard == '0':
+            break
+        
+#-------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -87,14 +111,15 @@ while True:
         print("Login berhasil!")
         print(f"Selamat datang, {username}!")
         time.sleep(1.5)
-        os.system('cls')
-        break
+        os.system('cls') 
+        dashboard()
+        input_dashboard()
+
     else:
         print("Login gagal! Username atau password salah.")
         time.sleep(1.5)
         os.system('cls')
-        menu_login()
-        
+        menu_login()        
 
 db.close()
 #-------------------------------------------------------------------------------------------------------------------------------------------
