@@ -1,7 +1,7 @@
 import psycopg2, os, time
 #-------------------------------------------------------------------------------------------------------------------------------------------
 # Menghubungkan ke database
-db = psycopg2.connect(database='BasdaKK', user='postgres', password='afan28', host='localhost', port='5432')
+db = psycopg2.connect(database='BasdaKK', user='postgres', password='123123', host='localhost', port='5432')
 #-------------------------------------------------------------------------------------------------------------------------------------------
 def menu_login():
 
@@ -29,6 +29,7 @@ def menu_login():
             exit()  
         else:
             return  
+            
 #-------------------------------------------------------------------------------------------------------------------------------------------
 def login(username, password):
     cursor = db.cursor()
@@ -48,7 +49,7 @@ def dashboard():
 |         \033[32mHalo Min :*\033[0m         |
 ===============================
 |                             |
-|  1. Profil Pegawai          |
+|  1. Profil Admin            |
 |  2. Data Pesanan            |
 |  3. Opname                  |
 |  4. Edit Stok               |
@@ -57,28 +58,43 @@ def dashboard():
 |_____________________________|
     """
     )
+
 #-------------------------------------------------------------------------------------------------------------------------------------------
-def input_dashboard():
 
-    while True:
-        pilihan_dashboard = input("Pilih Nomor = ")
+def profil_admin(login_id_login):
+    cursor = db.cursor()
+    query = """
+    SELECT admin.id_admin, admin.nama_admin, admin.no_telp_admin, alamat.alamat
+    FROM admin
+    JOIN alamat ON admin.alamat_id_alamat = alamat.id_alamat
+    WHERE admin.login_id_login = %s
+    """
+    cursor.execute(query, (login_id_login,))
+    result = cursor.fetchone()
+    cursor.close()
+    return result
 
-        if pilihan_dashboard == '1':
-            print('1')
-            break
-        elif pilihan_dashboard == '2':
-            print('2')
-            break
-        elif pilihan_dashboard == '3':
-            print('3')
-            break
-        elif pilihan_dashboard == '4':
-            print('4')
-            break
+#-------------------------------------------------------------------------------------------------------------------------------------------
+def tampilkan_profil_admin(user):
+    login_id_login = user[0]
+    data_admin = profil_admin(login_id_login)
+    if data_admin:
+        id_admin, nama_admin, no_telp_admin, alamat_admin = data_admin
+        print(
+            f"""
+================================================
+            \033[32mProfil Admin\033[0m          
+================================================
+    ID Admin: {id_admin}                                  
+    Nama: {nama_admin}                           
+    No. Telp: {no_telp_admin}                    
+    Alamat: {alamat_admin}                       
+_______________________________________________
+            """
+        )
+    else:
+        print("Data admin tidak ditemukan.")
 
-        elif pilihan_dashboard == '0':
-            break
-        
 #-------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -100,6 +116,29 @@ def input_dashboard():
 #-------------------------------------------------------------------------------------------------------------------------------------------
 # Program utama
 menu_login()
+
+def input_dashboard():
+
+    while True:
+        pilihan_dashboard = input("Pilih Nomor = ")
+
+        if pilihan_dashboard == '1':
+            tampilkan_profil_admin(user)
+            input("Tekan Enter untuk kembali ke dashboard...")
+            dashboard()
+        elif pilihan_dashboard == '2':
+            print('2')
+            break
+        elif pilihan_dashboard == '3':
+            print('3')
+            break
+        elif pilihan_dashboard == '4':
+            print('4')
+            break
+
+        elif pilihan_dashboard == '0':
+            break
+        
 
 while True:
     username = input("Username: ")
