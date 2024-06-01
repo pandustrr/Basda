@@ -97,25 +97,48 @@ _______________________________________________
 
 #-------------------------------------------------------------------------------------------------------------------------------------------
 
+def menu_data_pesanan():
+    os.system('cls')
+    print(
+        f"""
+===============================
+|         \033[32mData Pesanan \033[0m       |
+===============================
+|                             |
+|  1. Buat Pesanan            |
+|  2. Daftar Pesanan          |
+|                             |
+|  0. Back                    |
+|_____________________________|
+    """
+    )
 
-
-
-
-
-
-
-
-
-
-
-
+#-------------------------------------------------------------------------------------------------------------------------------------------
+def buat_pesanan():
+    os.system('cls')
+    print(
+        f"""
+===============================
+|       \033[32mBuat Pesanan\033[0m         |
+===============================
+        """
+    )
+#-------------------------------------------------------------------------------------------------------------------------------------------
+def input_data_pesanan():
+    pilihan_data_pesanan = input("Pilih Nomor = ")
+    while True:
+        if pilihan_data_pesanan == '1':
+            buat_pesanan()
+            break   
+        elif pilihan_data_pesanan == '2':
+            print('daftar pesanan')
+        elif pilihan_data_pesanan == '0':
+            break
 
 
 
 
 #-------------------------------------------------------------------------------------------------------------------------------------------
-# Program utama
-menu_login()
 
 def input_dashboard():
 
@@ -127,7 +150,8 @@ def input_dashboard():
             input("Tekan Enter untuk kembali ke dashboard...")
             dashboard()
         elif pilihan_dashboard == '2':
-            print('2')
+            menu_data_pesanan()
+            input_data_pesanan()
             break
         elif pilihan_dashboard == '3':
             print('3')
@@ -138,8 +162,11 @@ def input_dashboard():
 
         elif pilihan_dashboard == '0':
             break
-        
 
+#-------------------------------------------------------------------------------------------------------------------------------------------
+
+# Program utama
+menu_login()
 while True:
     username = input("Username: ")
     password = input("Password: ")
