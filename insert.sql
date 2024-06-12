@@ -20,18 +20,18 @@ VALUES  ('Jl. Semeru No XII, Sumbersari'),
         ('Jl. Bintang No. 99, Situbondo');
 
 -- Mengisi tabel admin
-INSERT INTO admin (nama_admin, no_telp_admin, login_id_login, alamat_id_alamat)
-VALUES  ('Pandu Satria', '081230487469', 1, 1),
-        ('Rahmad Afan', '085156649664', 2, 2),
-        ('Muhammad Rizal Aufar R.', '085854830482', 3, 3),
-        ('Diki Ferdianto', '085733478061', 4, 4),
-        ('Yanto Admin Santoso', '081231235656', 5, 5);
+INSERT INTO admin (nama_admin, no_telp_admin, username, password, alamat_admin,)
+VALUES  ('Pandu Satria', '081230487469', 'Pandu', '3008','Jl. Semeru No XII, Sumbersari'),
+        ('Rahmad Afan', '085156649664', 'Afan', '3023','Jl. Sumatra No. 32, Jember'),
+        ('Muhammad Rizal Aufar R.', '085854830482', 'Rizal', '3046','Jl. Mangga No. 15 Blok D, Kalibaru'),
+        ('Diki Ferdianto', '085733478061', 'Diki', '3056','Jl. Permata Indah No. 17, Blitar'),
+        ('Yanto Admin Santoso', '081231235656', 'admin', '123','Jl. Sudirman Blok 50, Bondowoso');
 
 -- Mengisi tabel supplier
 INSERT INTO supplier (nama_supplier, no_telp_supplier, alamat_id_alamat)
-VALUES  ('PT. Sumber Rezeki', '081234567890', 6),
-        ('CV. Berkah Abadi', '085123456789', 7),
-        ('UD. Sinar Jaya', '082123456780', 8),
-        ('PT. Maju Jaya', '081223456789', 9),
-        ('CV. Bintang Terang', '085233456789', 10);
+VALUES  ('PT. Sumber Rezeki', '081234567890', 'Perumahan Berlian Blok FF No 1, Surabaya'),
+        ('CV. Berkah Abadi', '085123456789', 'Jl. Rezeki No. 22, Jember'),
+        ('UD. Sinar Jaya', '082123456780', 'Jl. Mangga 17, Banyuwangi'),
+        ('PT. Maju Jaya', '081223456789', 'Jl. Bintang No. 99, Situbondo'),
+        ('CV. Bintang Terang', '085233456789', 'Jl. Semeru No XII, Sumbersari');
 
